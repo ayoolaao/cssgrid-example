@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS Grid</title>
+	<script defer>
+		function switchTab(event, tabName) {
+		  let i;
+		  let tabContent;
+		  let tabLinks;
+
+		  tabContent = document.getElementsByClassName("tab-content");
+		  for (i = 0; i < tabContent.length; i++){
+		    tabContent[1].style.display = "none";
+		  }
+
+		  tabLinks = document.getElementsByClassName("tab-links");
+		  for (i = 0; i < tabLinks.length; i++){
+		    tabLinks[i].className = tabLinks[i].className.replace(" active", "");
+		  }
+
+		  document.getElementById(tabName).style.display = "block";
+		  event.currentTarget.className += " active";
+        }
+	</script>
+	<style>
+		html, body{
+			padding: 0;
+			margin: 0;
+		}
+		body{
+			text-align: center;
+			vertical-align: center;
+			color: white;
+		}
+		#wrapper{
+			display: grid;
+			grid-template-rows: 32px auto 240px 32px;
+			width: 100vw;
+			height: 100vh;
+			background: #2296f4;
+			overflow: scroll;
+		}
+		#top-frame{
+			border-bottom: black 1px solid;
+			width: inherit;
+			height: 32px;
+		}
+		#main-frame{
+			display: grid;
+			grid-template-columns: auto 6fr;
+			/*background: #03a9f4;*/
+			width: inherit;
+			border-bottom: black 1px solid;
+			resize: vertical;
+			overflow: scroll;
+		}
+		#nav-frame{
+			border-right: black 1px solid;
+			height: auto;
+			width: 240px;
+			resize: horizontal;
+			overflow: scroll;
+		}
+		#work-frame{
+			width: auto;
+			background: lightblue;
+		}
+		#bottom-frame{
+			border-bottom: black 1px solid;
+			width: inherit;
+		}
+		#bottom-frame{
+			width: inherit;
+		}
+		.tab{
+			overflow: hidden;
+			border-top: 1px black solid;
+			/*border-bottom: 1px black solid;*/
+			/*background: #00bcd4;*/
+		}
+		.tab button{
+			background: inherit;
+			float: left;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			padding: 14px 16px;
+			transition: 0.2s;
+		}
+		.tab button:hover{
+			background: #03a9f4;
+		}
+		.tab button.active{
+			/*background: slategray;*/
+			border-bottom: goldenrod 2px solid;
+		}
+		.tab-content{
+			display: none;
+			padding: 6px 12px;
+		}
+	</style>
+</head>
+<body>
+<div id="wrapper">
+	<div id="top-frame"></div>
+	<div id="main-frame">
+		<div id="nav-frame"></div>
+		<div id="work-frame">
+			<div class="tab">
+				<button class="tab-links" onclick="switchTab(event, 'tab1')">Oyo</button>
+				<button class="tab-links" onclick="switchTab(event, 'tab2')">Abuja</button>
+				<button class="tab-links" onclick="switchTab(event, 'tab3')">Lagos</button>
+			</div>
+			<div id="tab1" class="tab-content">
+				<h3>Oyo</h3>
+				<p>The second largest city in Oyo State Nigeria.</p>
+			</div>
+			<div id="tab2" class="tab-content">
+				<h3>Abuja</h3>
+				<p>The capital of Nigeria.</p>
+			</div>
+			<div id="tab3" class="tab-content">
+				<h3>Lagos</h3>
+				<p>The largest city in Nigeria.</p>
+			</div>
+		</div>
+	</div>
+	<div id="bottom-frame"></div>
+	<div id="footer-frame"></div>
+</div>
+</body>
+</html>
